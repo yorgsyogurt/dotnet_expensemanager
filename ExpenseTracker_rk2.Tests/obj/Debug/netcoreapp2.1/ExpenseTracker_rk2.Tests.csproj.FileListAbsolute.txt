@@ -1,8 +1,0 @@
-C:\Users\Xiaomi\source\repos\ExpenseTracker_rk2\ExpenseTracker_rk2.Tests\bin\Debug\netcoreapp2.1\ExpenseTracker_rk2.Tests.deps.json
-C:\Users\Xiaomi\source\repos\ExpenseTracker_rk2\ExpenseTracker_rk2.Tests\bin\Debug\netcoreapp2.1\ExpenseTracker_rk2.Tests.dll
-C:\Users\Xiaomi\source\repos\ExpenseTracker_rk2\ExpenseTracker_rk2.Tests\obj\Debug\netcoreapp2.1\ExpenseTracker_rk2.Tests.csprojAssemblyReference.cache
-C:\Users\Xiaomi\source\repos\ExpenseTracker_rk2\ExpenseTracker_rk2.Tests\obj\Debug\netcoreapp2.1\ExpenseTracker_rk2.Tests.csproj.CoreCompileInputs.cache
-C:\Users\Xiaomi\source\repos\ExpenseTracker_rk2\ExpenseTracker_rk2.Tests\obj\Debug\netcoreapp2.1\ExpenseTracker_rk2.Tests.AssemblyInfoInputs.cache
-C:\Users\Xiaomi\source\repos\ExpenseTracker_rk2\ExpenseTracker_rk2.Tests\obj\Debug\netcoreapp2.1\ExpenseTracker_rk2.Tests.AssemblyInfo.cs
-C:\Users\Xiaomi\source\repos\ExpenseTracker_rk2\ExpenseTracker_rk2.Tests\bin\Debug\netcoreapp2.1\ExpenseTracker_rk2.Tests.runtimeconfig.json
-C:\Users\Xiaomi\source\repos\ExpenseTracker_rk2\ExpenseTracker_rk2.Tests\bin\Debug\netcoreapp2.1\ExpenseTracker_rk2.Tests.runtimeconfig.dev.json
