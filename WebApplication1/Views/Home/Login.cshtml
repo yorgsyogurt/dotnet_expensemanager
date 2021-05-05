@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense manager</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+
+        .parent {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: auto;
+        }
+
+        .block {
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -125px 0 0 -125px;
+        }
+
+        #myFooter {
+            visibility: hidden;
+        }
+
+        #logoutLi {
+            visibility: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+    <nav>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Expense manager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        <div class="parent">
+            <div class="block">
+                @if (Request.Params["error"] == "pass")
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Incorrect username or password!
+                    </div>
+                }
+                @if (Request.Params["error"] == "username")
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Incorrect username or password!
+                    </div>
+                }
+                <div id="div_login" class="">
+                    <form action="/Home/login" method="post">
+                        <h1>Login</h1>
+                        <div id="message"></div>
+                        <div class="form-group">
+                            <input type="text" class="textbox form-control" id="txt_uname" name="txt_uname" placeholder="Username" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="textbox form-control" id="txt_pwd" name="txt_pwd" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <button name="but_submit" id="but_submit" class="btn btn-secondary"> Submit </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

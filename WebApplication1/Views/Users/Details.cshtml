@@ -1,0 +1,111 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+
+    <div class="row justify-content-center" style="margin-bottom: 16px; ">
+
+        <img src="@Model.ImageURL" style="width: 40%; border-radius: 10%">
+
+    </div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.first_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageURL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<div class="row">
+
+    @helper OperationsList(IEnumerable<WebApplication1.Models.Operation> ops)
+    {
+        if (ops != null)
+        {
+            <h4> Operations of @Model.first_name @Model.last_name </h4>
+            <table class="table">
+                <tr>
+                    <th scope="row">
+                        Name
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                </tr>
+
+                @foreach (WebApplication1.Models.Operation o in ops)
+                {
+                    if (o.UserId == Model.Id)
+                    {
+                        <tr>
+                            <td>
+                                @o.name
+                            </td>
+                            <td>
+                                @o.amount
+                            </td>
+                            <td>
+                                @o.creationDate
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        }
+    }
+
+    @OperationsList(ViewBag.ops)
+
+</div>
