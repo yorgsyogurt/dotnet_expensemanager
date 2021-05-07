@@ -13,6 +13,7 @@ using Syncfusion.Pdf.Graphics;
 using Syncfusion.Drawing;
 using System.IO;
 using Syncfusion.Pdf.Grid;
+using System.Threading.Tasks;
 
 namespace WebApplication1.Controllers
 {
@@ -20,11 +21,71 @@ namespace WebApplication1.Controllers
     {
         private DataContext db = new DataContext();
 
-        // GET: Operations
-        public ActionResult Index()
+        //GET: Operations
+        public ActionResult Index(string sortOrder, string sortingField, string searchFilter)
         {
-            return View(db.Operations.ToList());
+           
+            ViewData["SortingField"] = sortingField;
+            ViewData["SortOrder"] = sortOrder;
+            IEnumerable<Operation> operations = db.Operations;
+            if (searchFilter != null)
+            {
+                operations = operations.ToList().Where(s => s.name.Contains(searchFilter));
+            }
+            switch(sortingField)
+            {
+                case "name":
+                    if (sortOrder == "ascending")
+                        return View(operations.OrderByDescending(s => s.name).Reverse());
+                    else
+                        return View(operations.OrderByDescending(s => s.name));
+                case "creationDate":
+                    if (sortOrder == "ascending")
+                        return View(operations.OrderByDescending(s => s.creationDate).Reverse());
+                    else
+                        return View(operations.OrderByDescending(s => s.creationDate));
+                case "amount":
+                    if (sortOrder == "ascending")
+                        return View(operations.OrderByDescending(s => s.amount).Reverse());
+                    else
+                        return View(operations.OrderByDescending(s => s.amount));
+                case "type":
+                    if (sortOrder == "ascending")
+                        return View(operations.OrderByDescending(s => s.type).Reverse());
+                    else
+                        return View(operations.OrderByDescending(s => s.type));
+                default:
+                    return View(operations.OrderByDescending(s => s.Id).Reverse());
+            }
+            
         }
+
+        ////public async Task<ActionResult> Index(string sortOrder)
+        //public ActionResult Index(string sortOrder)
+        //{
+        //    //ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name" : "";
+        //    //ViewData["DateSortParm"] = sortOrder == "Date" ? "creationDate" : "Date";
+        //    ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name" : "";
+        //    ViewData["DateSortParm"] = sortOrder == "Date" ? "creationDate" : "";
+        //    Console.WriteLine(sortOrder);
+        //    var operations = from s in db.Operations.ToList()
+        //                   select s;
+        //    switch (sortOrder)
+        //    {
+        //        case "name":
+        //            operations = operations.OrderByDescending(s => s.name);
+        //            break;
+        //        case "creationDate":
+        //            operations = operations.OrderBy(s => s.creationDate);
+        //            break;
+        //        default:
+        //            operations = operations.OrderBy(s => s.Id);
+        //            break;
+        //    }
+        //    //return View(await operatoins.AsNoTracking().ToListAsync());
+        //    return View(operations);
+
+        //}
 
         public ActionResult CreateDocument()
         {
